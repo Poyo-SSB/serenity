@@ -537,7 +537,7 @@ pub struct MessageUpdateEvent {
     pub role_subscription_data: Option<Option<RoleSubscriptionData>>,
     pub guild_id: Option<GuildId>,
     pub member: Option<Option<Box<PartialMember>>>,
-    pub poll: Option<Poll>,
+    pub poll: Option<Option<Box<Poll>>>,
 }
 
 impl MessageUpdateEvent {
