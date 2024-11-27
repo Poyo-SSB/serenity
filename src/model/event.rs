@@ -537,6 +537,7 @@ pub struct MessageUpdateEvent {
     pub role_subscription_data: Option<Option<RoleSubscriptionData>>,
     pub guild_id: Option<GuildId>,
     pub member: Option<Option<Box<PartialMember>>>,
+    pub poll: Option<Poll>,
 }
 
 impl MessageUpdateEvent {
@@ -580,6 +581,7 @@ impl MessageUpdateEvent {
             role_subscription_data,
             guild_id,
             member,
+            poll,
         } = self;
 
         // Discord won't send a MessageUpdateEvent with a different MessageId and ChannelId than we
@@ -618,6 +620,7 @@ impl MessageUpdateEvent {
         if let Some(x) = role_subscription_data { message.role_subscription_data.clone_from(x) }
         message.guild_id = *guild_id;
         if let Some(x) = member { message.member.clone_from(x) }
+        if let Some(x) = poll { message.poll.clone_from(x) }
     }
 }
 
